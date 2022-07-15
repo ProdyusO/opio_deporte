@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,9 +78,13 @@ WSGI_APPLICATION = "main.wsgi.application"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": 'd89eimhcq0a01l',
+        "USER": 'oaobiwgwvbfttn',
+        "PASSWORD": '7b96876a01e57df389f33eac965ee5138721b34b0b66ed62a936c456e5b39b38',
+        "HOST": "ec2-54-228-32-29.eu-west-1.compute.amazonaws.com",
+        "PORT": '5432',
     }
 }
 
@@ -122,6 +127,8 @@ STATICFILES_DIRS = [
     STATIC_DIR,
 ]
 STATIC_URL = "/static/"
+
+django_heroku.settings(locals())
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
