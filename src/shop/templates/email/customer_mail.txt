@@ -1,0 +1,27 @@
+Шановний(а) {{owner.first_name}}! Дякуємо за замовлення в Інтернет-магазині @opio_deporte!
+Адміністрація сайту зв'яжеться з Вами найближчим часом для підтвердження замовлення!
+
+Ваше замовлення:
+{% for item in customer_orders %}
+Товар - {{ item.product }}
+Ціна - {{ item.price }} грн.
+Кількість - {{ item.quantity }}
+Вартість - {{ item.total }} грн.
+{% endfor %}
+
+Загальна вартість замовлення: {{price}} грн.
+
+{% if owner.new_post %}
+Кур'єрська служба та номер відділення - {{owner.new_post}}
+{% endif %}
+
+{% if owner.comment %}
+Коментар - {{owner.comment}}
+{% endif %}
+
+З повагою,
+Адміністрація сайту OPIO.WR!
+
+Telegram: @ooopppiiiooo
+
+

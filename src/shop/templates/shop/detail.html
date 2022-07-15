@@ -1,0 +1,55 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-5 pt-5">
+    <div class="row">
+        <div class="item_carousel col-md-5">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{product.image.url}}" class="d-block w-100" alt="image">
+                    </div>
+                    {% if product.image2 %}
+                    <div class="carousel-item">
+                        <img src="{{product.image2.url}}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif %}
+                    {% if product.image3 %}
+                    <div class="carousel-item">
+                        <img src="{{product.image3.url}}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif %}
+                    {% if product.image4 %}
+                    <div class="carousel-item">
+                        <img src="{{product.image4.url}}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class=" text-center item_car2 col-md-6 mt-2">
+            <h1>{{product.title}}</h1>
+            <h5 class="mt-5">{{product.content}}</h5>
+            <h1 class="mt-5">{{product.price}} UAH</h1>
+            <a href="{% url 'add_to_cart' product.pk %}"><button class="btn btn-light my-5">До кошику</button></a>
+        </div>
+        <div class="item_car2 col-md-1"></div>
+    </div>
+</div>
+{% endblock %}
