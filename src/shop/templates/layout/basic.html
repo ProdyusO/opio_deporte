@@ -33,7 +33,7 @@
     <div class="container-fluid text-center">
         <h3 style="font-size: 45px" class="mt-5 py-5">OPIO.DEPORTE</h3>
         <img class="container" style="height: 600px;" src="{% static 'main_logo/IMG_2530.PNG' %}" alt="be">
-        <img class="container" src="{% static 'main_logo/IMG_2540.MOV' %}" alt="be">
+        <img class="container" src="{% static 'main_logo/IMG_2540.mp4' %}" alt="be">
     </div>
 </header>
 <div class="container-fluid my-3">
@@ -76,12 +76,12 @@
             <div class="row">
                 {% if paginated_products.has_previous %}
                 <div class="col text-center">
-                    <a class="text-white" href="{% url 'index' %}?page={{paginated_products.previous_page_number}}">Попередня сторінка</a>
+                    <a href="{% url 'index' %}?page={{paginated_products.previous_page_number}}">Попередня сторінка</a>
                 </div>
                 {% endif %}
                 {% if paginated_products.has_next %}
                 <div class="col text-center">
-                    <a class="text-white" href="{% url 'index' %}?page={{paginated_products.next_page_number}}">Наступна сторінка</a>
+                    <a href="{% url 'index' %}?page={{paginated_products.next_page_number}}">Наступна сторінка</a>
                 </div>
                 {% endif %}
                 {% endblock %}
