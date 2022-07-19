@@ -1,0 +1,19 @@
+Клієнт - {{owner.name}}
+Ім'я  - {{owner.last_name}}  {{owner.first_name}}
+Телефон - {{owner.phone_number}}
+E-mail - {{owner.email}}
+Тип замовлення - {{owner.buying_type}}
+{% if owner.new_post %}
+Кур'єрська служба та номер відділення - {{owner.new_post}}
+{% endif %}
+Доданий коментар - {{owner.comment}}
+
+Замовлення
+{% for item in customer_orders %}
+Товар - {{ item.product }}
+Ціна - {{ item.price }} грн.
+Кількість - {{ item.quantity }}
+Вартість - {{ item.total }} грн.
+{% endfor %}
+
+Загальна вартість замовлення: {{price}} грн.

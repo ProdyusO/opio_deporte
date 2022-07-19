@@ -1,0 +1,60 @@
+{% extends 'layout/basic.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} {% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-5 py-5">Ваш кошик {% if not customer_orders.count %} порожній {% endif %}</h1>
+{% if customer_orders.count %}
+<table class="table text-black">
+  <thead>
+    <tr>
+      <th class="text-center" scope="col">Назва</th>
+      <th class="text-center" scope="col">Зображення</th>
+      <th class="text-center" scope="col">Ціна</th>
+      <th scope="col">Кількість</th>
+      <th class="text-center" scope="col">Вартість</th>
+      <th class="text-center" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+{% for item in customer_orders %}
+{% if item.in_order == False %}
+    <tr>
+      <td class="text-center" scope="row">{{ item.product }}</td>
+      <td class="w-25"><img src="{{ item.product.image.url }}" class= "img-fluid"></td>
+      <td class="text-center" >{{ item.price }}</td>
+      <td>
+        <form class="mx-auto" action="{% url 'quantity' item.pk %}" method="POST">
+          {% csrf_token %}
+          <input type="number" class="form-control text-center" name="qwt" style="width: 80px" min="1" value="{{ item.quantity }}">
+          <input type="submit" class="btn btn-light mt-3 text-center" value="Обрати">
+        </form>
+      </td>
+      <td class="text-center">{{ item.total }}</td>
+      <td><a href="{% url 'delete' item.pk %}"><button class="bi bi-x-square">X</button></a></td>
+    </tr>
+{% endif %}
+{% endfor %}
+  </tbody>
+</table>
+<div class="container text-center my-4">
+  <div class="row row-cols-2 ">
+    <div class="col col-lg-7 col-md-7"></div>
+    <div class="col col-lg-5 col-md-5">
+  <h1 style="font-size: 20px; border: solid black; box-shadow: 5px 5px 5px black; border-radius: 5px; padding: 10px;">До сплати: <strong>{{total}} UAH</strong></h1>
+      </div>
+  </div>
+</div>
+<h1 class="text-center">Форма замовлення</h1>
+<div class="container-fluid">
+<form class="px-5" method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <div class="text-center">
+  <input type="submit" style="border: solid white; box-shadow: 2px 2px 2px 2px grey;" class="btn btn-light text-black btn-block mb-3 mt-3" value="Оформити замовлення">
+  </div>
+</form>
+</div>
+{% endif %}
+{% endblock %}
