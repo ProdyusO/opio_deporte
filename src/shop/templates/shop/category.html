@@ -8,8 +8,8 @@
                     {% for item in products %}
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card text-center h-100">
-                            <a href ="{% url 'product_detail' pk=item.id %}"><img class="card-img-top" src="{{ item.image.url }}" alt="..." /></a>
-                            <div class="card-body">
+                            <a style="border: solid white; box-shadow: 2px 2px 2px 2px grey;" href ="{% url 'product_detail' pk=item.id %}"><img class="card-img-top" src="{{ item.image.url }}" alt="..." /></a>
+                            <div style="border: solid white; box-shadow: 2px 2px 2px 2px grey;" class="card-body">
                                 <h3 class="card-title">
                                     <a class="item3link-danger" style="text-decoration: none; color: black; border: solid white; box-shadow: 5px 5px 5px white; border-radius: 5px;" href="{% url 'product_detail' pk=item.id %}">{{ item.title }}</a>
                                 </h3>
