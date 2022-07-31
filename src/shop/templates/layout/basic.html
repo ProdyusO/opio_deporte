@@ -32,7 +32,7 @@
 <header>
     <div class="container-fluid text-center">
         <h3 style="font-size: 45px" class="mt-5 py-5">OPIO.DEPORTE</h3>
-        <lottie-player src="{% static 'main_logo/main_logo.json' %}"  background="#FFFFFF"  speed="1"  style="width: 400px; height: 500px; margin-left: auto; margin-right: auto;"  loop autoplay></lottie-player>
+        <lottie-player src="{% static 'main_logo/main_logo.json' %}"  background="#FFFFFF"  speed="1"  style="height: 50%; width: 50%; margin-left: auto; margin-right: auto;"  loop autoplay></lottie-player>
     </div>
 </header>
 <div class="container-fluid my-3">
@@ -43,14 +43,14 @@
                         {% for category in categories %}
                         <table class="my-2">
                             <tr>
-                                <td><a style="text-decoration: none; color: black; border: solid grey; box-shadow: 4px 4px 4px grey; border-radius: 5px; font-size: 20px;" href="{% url 'category_detail' category.pk %}"> {{category.title}} </a></td>
+                                <td><a style="padding: 2% 5%; text-decoration: none; color: black; border: solid grey; box-shadow: 4px 4px 4px grey; border-radius: 5px; font-size: 20px;" href="{% url 'category_detail' category.pk %}"> {{category.title}} </a></td>
                             </tr>
                         </table>
                         {% endfor %}
                 </div>
             </div>
         </div>
-        <div class="col col-lg-10 col-md-10 col-xs-10 col-sm-10">
+        <div class="col col-lg-10 col-md-10 col-xs-10 col-sm-10 mt-3">
             <div class="container" >
                 <div class="row">
                     {% for item in paginated_products %}
